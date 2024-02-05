@@ -1,4 +1,3 @@
-
 type Props = {
   handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
   query: string;
@@ -11,7 +10,7 @@ const MyAppsSearchBar: React.FC<Props> = ({ handleSearch, query }) => {
       value={query}
       onChange={handleSearch}
       placeholder="Search..."
-      className="border h-fit border-primary border-opacity-20 w-full rounded-lg max-w-xl "
+      className="border h-fit border-primary border-opacity-20 w-full rounded-lg max-w-xl dark:text-primary"
     />
   );
 };

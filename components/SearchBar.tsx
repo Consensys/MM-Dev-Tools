@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDebounce } from "@/lib/hooks";
 import { SearchResults } from "./SearchResults";
 import { LatestAndEditorsPick } from "./LatestAndEditorsPick";
@@ -19,11 +19,21 @@ export const SearchBar: React.FC<Props> = ({ applications }) => {
     show: false,
   });
 
+  const getLowerCaseCategories = (categories: string[]) => {
+    return categories.map((category) => category.toLowerCase());
+  };
+
   const search = () => {
     const items = query
-      ? applications.filter((item) =>
-          item.title.toLowerCase().includes(query.toLowerCase())
-        )
+      ? applications.filter((item) => {;
+          return (
+            item.title.toLowerCase().includes(query.toLowerCase()) ||
+            (getLowerCaseCategories(item.category).includes(
+              query.toLowerCase()
+            ) &&
+              item)
+          );
+        })
       : [];
 
     setResults((prevResults) => ({ ...prevResults, items }));
@@ -36,11 +46,11 @@ export const SearchBar: React.FC<Props> = ({ applications }) => {
   };
 
   return (
-    <div className="relative">
-      <div className="flex flex-col mt-8 sm:-mx-2 sm:flex-row sm:justify-center">
-        <div className="search-box flex items-center w-full sm:w-3/4 md:max-w-lg rounded-xl focus-within:shadow-lg bg-gray-100">
+    <div className="relative flex flex-col items-center w-full">
+      <div className="flex flex-col mt-8 sm:-mx-2 sm:flex-row sm:justify-center w-full max-w-2xl">
+        <div className="search-box flex items-center w-full sm:w-3/4 md:max-w-lg rounded-lg focus-within:shadow-lg bg-gray-100">
           <input
-            className="bg-transparent border-0 h-full py-4 placeholder:opacity-60 w-full outline-none text-sm text-gray-700 pr-2 border-gray-300 rounded-l-xl"
+            className="bg-transparent border-0 h-full py-4 placeholder:opacity-60 w-full outline-none text-sm text-gray-700 pr-2 border-gray-300 rounded-l-lg"
             type="text"
             autoComplete="off"
             value={query}
@@ -73,8 +83,8 @@ export const SearchBar: React.FC<Props> = ({ applications }) => {
       </div>
 
       {results.show && (
-        <div className="absolute z-20 flex items-center justify-center w-full pt-4">
-          <ul className="relative w-full bg-white sm:w-3/4 md:w-[476px] rounded-xl focus-within:shadow-lg pb-4 shadow-md">
+        <div className="absolute w-full z-20 flex items-center max-w-2xl justify-center pt-4 mt-20">
+          <ul className="relative w-full bg-white sm:w-3/4 rounded-lg focus-within:shadow-lg pb-4 shadow-md">
             {results.items.length > 0 ? (
               <SearchResults results={results} />
             ) : (

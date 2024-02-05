@@ -1,7 +1,5 @@
 "use client";
 
-import { useAccount } from "wagmi";
-import { useRouter } from "next/navigation";
 import AppCard from "./AppCard";
 import MyAppsSearchBar from "./MyAppsSearchBar";
 import Button from "./Button";
@@ -9,14 +7,19 @@ import AddIcon from "./icons/AddIcon";
 import { useState } from "react";
 import { useDebounce } from "@/lib/hooks";
 import ApplicationForm from "./ApplicationForm";
+import { H2, H3 } from "./Text";
 
 type Props = {
   applications: IApplication[];
+  type?: "short" | "card";
+  category?: string;
 };
 
-const UserApps: React.FC<Props> = ({ applications }) => {
-  const { isConnected } = useAccount();
-  const router = useRouter();
+const UserApps: React.FC<Props> = ({
+  applications,
+  type = "card",
+  category,
+}) => {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [filteredApps, setFilteredApps] = useState(applications);
@@ -36,11 +39,6 @@ const UserApps: React.FC<Props> = ({ applications }) => {
   };
 
   useDebounce(search, query, 500);
-
-  if (!isConnected && typeof window !== "undefined") {
-    router.push("/");
-    return null;
-  }
 
   return (
     <>
@@ -67,10 +65,17 @@ const UserApps: React.FC<Props> = ({ applications }) => {
         </div>
       ) : null}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
-        {filteredApps.map((data) => (
-          <AppCard key={data.id} application={data} />
-        ))}
+      <div className="mt-10">
+        {category && filteredApps.length > 0 ? (
+          <H2 className="capitalize font-semibold">{category}</H2>
+        ) : (
+          <H2>All apps</H2>
+        )}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-10 mt-10">
+          {filteredApps.map((data) => (
+            <AppCard type={type} key={data.id} application={data} />
+          ))}
+        </div>
       </div>
 
       <ApplicationForm

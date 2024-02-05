@@ -12,7 +12,7 @@ type Props = {
 export const SearchResults: React.FC<Props> = ({ results }) => (
   <>
     <div className="flex items-center justify-between opacity-50 p-4">
-      <H4 className="font-normal">Search</H4>
+      <H4 className="font-normal dark:text-gray-800">Search</H4>
       <SearchIcon />
     </div>
     {results.items.map((item: IApplication) => (

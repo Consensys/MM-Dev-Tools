@@ -10,7 +10,7 @@ interface UrlProps extends LinkProps {
 
 export const H1 = (props: HTMLProps<HTMLHeadingElement>): ReactElement => {
   const rootClassName = twMerge(
-    "text-primary block text-3xl leading-8 font-bold tracking-tight md:text-5xl",
+    "text-primary dark:text-white block text-3xl leading-8 font-bold tracking-tight md:text-5xl",
     props.className ? props.className : ""
   );
 

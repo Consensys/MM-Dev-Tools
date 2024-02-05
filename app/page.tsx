@@ -59,47 +59,47 @@ const Home = async ({
     <div className={cn(inter.className, "pb-10")}>
       {/* @ts-expect-error Server Component */}
       <Hero total={total} />
-      {editorPickedApplications.length > 0 ? (
-        <ApplicationsContainer
-          header="Most Popular Tools"
-          applications={editorPickedApplications}
-          className="mt-24"
-        />
-      ) : null}
+      
+      <section className="grid grid-cols-1 w-full gap-20 md:px-5 lg:max-w-screen-2xl">
+        {editorPickedApplications.length > 0 ? (
+          <ApplicationsContainer
+            header="Most Popular Tools"
+            applications={editorPickedApplications}
+            className="mt-24"
+          />
+        ) : null}
 
-      {marketplacesApps.length > 0 ? (
-        <ApplicationsContainer
-          header="Marketplaces"
-          applications={marketplacesApps}
-          type="short"
-          className="mt-24"
-        />
-      ) : null}
+        {marketplacesApps.length > 0 ? (
+          <ApplicationsContainer
+            header="Marketplaces"
+            applications={marketplacesApps}
+            type="short"
+          />
+        ) : null}
+    
+        {blockchainApps.length > 0 ? (
+          <ApplicationsContainer
+            header="Blockchain"
+            applications={blockchainApps}
+            type="short"
+          />
+        ) : null}
 
-      {blockchainApps.length > 0 ? (
-        <ApplicationsContainer
-          header="Blockchain"
-          applications={blockchainApps}
-          type="short"
-          className="mt-24"
-        />
-      ) : null}
+        {nftApps.length > 0 ? (
+          <ApplicationsContainer
+            header="NFT tools"
+            applications={nftApps}
+            type="short"
+          />
+        ) : null}
 
-      {nftApps.length > 0 ? (
-        <ApplicationsContainer
-          header="NFT tools"
-          applications={nftApps}
-          type="short"
-          className="mt-24"
-        />
-      ) : null}
-
-      {/* <ApplicationsContainer
+        {/* <ApplicationsContainer
         header="All Available Tools"
         applications={applications}
         className="mt-24"
       />
       {!isAllFetched ? <Pagination currentPage={page} limit={limit} /> : null} */}
+      </section>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { Nav } from "../components/Nav";
 import Providers from "@/components/Providers";
 
 import "../styles/globals.css";
+import React from "react";
 
 type Props = {
   description?: string;
@@ -37,7 +38,7 @@ const Layout: React.FC<Props> = ({
               <Nav />
               <main className="max-w-screen-2xl mx-auto">{children}</main>
             </div>
-            <div className="-z-10 w-full h-[70vh] absolute top-0 left-0 bg-light-pattern dark:bg-dark-pattern bg-no-repeat bg-cover lg:bg-[length:100%_100%]"></div>
+            <div className="-z-10 w-full h-[65vh] absolute top-0 left-0 bg-light-pattern dark:bg-dark-pattern bg-no-repeat bg-cover lg:bg-[length:100%_100%]"></div>
           </div>
         </Providers>
       </body>
