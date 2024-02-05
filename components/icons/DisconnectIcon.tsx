@@ -3,8 +3,6 @@ import { SVGProps } from "react";
 import { useTheme } from "next-themes";
 
 const DisconnectIcon = (props: SVGProps<SVGSVGElement>) => {
-  const { resolvedTheme } = useTheme();
-  const stroke = resolvedTheme === "dark" ? "#fff" : "#202328";
 
   return (
     <svg
@@ -15,7 +13,7 @@ const DisconnectIcon = (props: SVGProps<SVGSVGElement>) => {
       {...props}
     >
       <path
-        stroke={stroke}
+        stroke="#fff"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={1.5}

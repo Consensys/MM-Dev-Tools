@@ -6,10 +6,10 @@ import { Menu, Transition } from "@headlessui/react";
 import { Bars4Icon } from "@heroicons/react/24/outline";
 import ApplicationForm from "./ApplicationForm";
 import Link from "next/link";
-import PolisLogo from "./icons/PolisLogo";
 import { ConnectButton } from "./ConnectButton";
 import ThemeButton from "./ThemeButton";
 import { isAllowedEditor } from "@/lib/utils";
+import MetaMaskLogo from "./icons/MetaMaskLogo";
 
 export const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -17,10 +17,18 @@ export const Nav = () => {
 
   return (
     <nav className="flex items-center justify-between py-4 max-w-screen-2xl mx-auto">
-      <Link href="/" className="flex gap-4">
-        <PolisLogo />
-        <span className="text-2xl font-bold text-primary dark:text-white">
-          Polis
+      <Link href="/" className="flex items-center gap-4">
+        <div className="hidden dark:block">
+          <MetaMaskLogo />
+        </div>
+        <div className="block dark:hidden">
+          <MetaMaskLogo attributeType="dark" />
+        </div>
+        <span className="text-xl duration-100 flex font-semibold text-primary dark:text-white dark:hover:text-[#4596F5] hover:text-[#4596F5]">
+          <div className="w-[1px] h-full bg-black bg-opacity-40 dark:bg-white dark:bg-opacity-60 mr-4">
+            &nbsp;
+          </div>
+          Dev Tools
         </span>
       </Link>
       <div className="hidden lg:flex">

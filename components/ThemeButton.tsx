@@ -46,10 +46,7 @@ const ThemeButton: React.FC = () => {
         >
           <span
             className={classNames(
-              resolvedTheme === "dark"
-                ? "opacity-100 duration-200 ease-in"
-                : "opacity-0 duration-100 ease-out",
-              "absolute inset-0 flex h-full w-full items-center justify-center transition-opacity"
+              "dark:opacity-100 dark:duration-200 dark:ease-in opacity-0 duration-100 ease-out absolute inset-0 flex h-full w-full items-center justify-center transition-opacity"
             )}
             aria-hidden="true"
           >

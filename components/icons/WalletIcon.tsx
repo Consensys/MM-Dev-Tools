@@ -1,10 +1,7 @@
 import * as React from "react";
 import { SVGProps } from "react";
-import { useTheme } from "next-themes";
 
 const WalletIcon = (props: SVGProps<SVGSVGElement>) => {
-  const { resolvedTheme } = useTheme();
-  const stroke = resolvedTheme === "dark" ? "#202328" : "#fff";
 
   return (
     <svg
@@ -12,10 +9,10 @@ const WalletIcon = (props: SVGProps<SVGSVGElement>) => {
       width={17}
       height={17}
       fill="none"
+      className="stroke-white dark:stroke-black"
       {...props}
     >
       <path
-        stroke={stroke}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={1.5}
