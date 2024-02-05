@@ -4,7 +4,6 @@ import Loading from "@/components/ApplicationForm/Loading";
 import Button from "@/components/Button";
 import { Text } from "@/components/Text";
 import { updateEditorsPick } from "@/lib/actions";
-import { revalidatePath } from "next/cache";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -15,10 +14,11 @@ interface EditorsCardProps {
 }
 
 export const EditorsPickCard: React.FC<EditorsCardProps> = ({
-  application: { id, title, description, logo, isEditorsPick },
+  application,
 }) => {
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const { id, title, description, logo, isEditorsPick } = application;
 
   const truncateDescription = (description: string | undefined) => {
     if (description && description.length > 140) {

@@ -19,7 +19,7 @@ export const AppCard: React.FC<AppCardProps> = ({
   const [error, setError] = useState(false);
 
   const truncateDescription = (description: string | undefined) => {
-    if (description && description.length > 140) {
+    if (description && description.length > 85) {
       return description.slice(0, 85).trim() + "...";
     }
     return description;
@@ -31,7 +31,7 @@ export const AppCard: React.FC<AppCardProps> = ({
     <>
       {type === "card" ? (
         <Link
-          className="relative w-full overflow-hidden flex gap-6 min-h-[118px] px-3 py-2 items-center md:max-w-md border border-purple-100 dark:border-gray-600 rounded-xl bg-gradient-to-b from-purple-100 dark:from-slate-900 to-transparent z-10 hover:shadow-lg hover:scale-105 duration-150"
+          className="relative w-full overflow-hidden flex gap-6 min-h-[118px] px-3 py-2 items-center border dark:border-gray-600 rounded-xl bg-gradient-to-b from-purple-50 dark:from-slate-900 to-transparent z-10 hover:shadow-lg hover:scale-105 duration-150"
           href={`/applications/${id}`}
         >
           <div>
@@ -67,13 +67,13 @@ export const AppCard: React.FC<AppCardProps> = ({
             alt={title}
             width={140}
             height={140}
-            className="absolute right-3 bottom-[-30px] -z-10 blur-xl opacity-50"
+            className="absolute hidden dark:block right-3 bottom-[-30px] -z-10 blur-xl opacity-20"
           />
         </Link>
       ) : (
         <Link
           href={`/applications/${id}`}
-          className="flex gap-3 px-3 w-full py-2 items-center md:max-w-md z-10 justify-between hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl dark:hover:bg-opacity-40 duration-150 cursor-pointer"
+          className="flex gap-3 px-3 w-full py-2 items-center md:max-w-md z-10 justify-between hover:bg-slate-50 dark:hover:bg-slate-600 rounded-xl dark:hover:bg-opacity-40 duration-150 cursor-pointer"
         >
           <div className="flex items-center gap-3">
             <div>
