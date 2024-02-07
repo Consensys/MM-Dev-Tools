@@ -73,6 +73,7 @@ const Home = async ({
           <ApplicationsContainer
             header="Marketplaces"
             applications={marketplacesApps}
+            category="marketplace"
             type="short"
           />
         ) : null}

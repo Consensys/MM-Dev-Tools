@@ -8,6 +8,7 @@ type ApplicationsContainerProps = {
   header?: string;
   className?: string;
   type?: "short" | "card";
+  category?: string;
 };
 
 const ApplicationsContainer: FC<ApplicationsContainerProps> = ({
@@ -15,6 +16,7 @@ const ApplicationsContainer: FC<ApplicationsContainerProps> = ({
   applications,
   className,
   type = "card",
+  category,
 }) => {
   const categories = applications.map((app) =>
     app.category.map((cat) => cat.trim().toLowerCase())
@@ -46,11 +48,15 @@ const ApplicationsContainer: FC<ApplicationsContainerProps> = ({
       ) : (
         <div className="flex justify-between items-center h-fit">
           <h3 className="text-2xl capitalize font-semibold text-transparent bg-gradient-to-br bg-clip-text from-primary to-slate-500 dark:from-white dark:to-slate-400">
-            {categories[0][0]}
+            {header}
           </h3>
           <Link
             className="text-blue-500 hover:text-blue-400 duration-150"
-            href={`/all_apps?cat=${categories[0][0]}`}
+            href={`${
+              category
+                ? `/all_apps?cat=${category}`
+                : `/all_apps?cat=${categories[0][0]}`
+            }`}
           >
             View All
           </Link>
