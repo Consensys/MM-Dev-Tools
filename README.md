@@ -55,7 +55,7 @@ Here's an overview of the included frameworks and tools.
 1. Clone the repository
 
 ```
-git@github.com:Consensys/polis.git
+git@github.com:Consensys/mm-dev-tools.git
 ```
 
 2. Install Dependancies
