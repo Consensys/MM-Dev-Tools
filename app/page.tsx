@@ -59,7 +59,7 @@ const Home = async ({
     <div className={cn(inter.className, "pb-10")}>
       {/* @ts-expect-error Server Component */}
       <Hero total={total} />
-      
+
       <section className="grid grid-cols-1 w-full gap-20 md:px-5 lg:max-w-screen-2xl">
         {editorPickedApplications.length > 0 ? (
           <ApplicationsContainer
@@ -73,15 +73,15 @@ const Home = async ({
           <ApplicationsContainer
             header="Marketplaces"
             applications={marketplacesApps}
-            category="marketplace"
             type="short"
           />
         ) : null}
-    
+
         {blockchainApps.length > 0 ? (
           <ApplicationsContainer
             header="Blockchain"
             applications={blockchainApps}
+            category="blockchain"
             type="short"
           />
         ) : null}
@@ -90,6 +90,7 @@ const Home = async ({
           <ApplicationsContainer
             header="NFT tools"
             applications={nftApps}
+            category="nft"
             type="short"
           />
         ) : null}
